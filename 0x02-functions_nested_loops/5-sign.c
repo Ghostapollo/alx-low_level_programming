@@ -7,7 +7,7 @@
  */
  
 
-int print_sign(int)
+int print_sign(int n)
 {
 	if (n > 0)
 	{
