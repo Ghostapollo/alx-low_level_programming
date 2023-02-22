@@ -1,16 +1,10 @@
-#include <unistd.h>
-#include <stdio.h>
 #include "main.h"
 
 /**
- * main - Entry point of the program
- *
- * this function prints the '_putchar'
- *
- * Return: Always 0 (Success)
+ * main - Entry point
+ * Return: Always 0
  */
 
-int _putchar(char c);
 int main(void)
 {
 	_putchar('_');
