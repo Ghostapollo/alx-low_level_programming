@@ -2,8 +2,8 @@
 
 /**
  * puts2 - Prints every other character of a string
- * @str: The string to be treated
- * Return: void
+ * @str: input
+ * Return: print
  */
 
 void puts2(char *str)
