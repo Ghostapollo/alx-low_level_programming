@@ -1,0 +1,1 @@
+points arrays and srtings
