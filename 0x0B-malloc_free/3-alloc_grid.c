@@ -1,7 +1,7 @@
-#include "main.h"		
+#include "main.h"
 #include <stdlib.h>
 
-/**		
+/**
  * alloc_grid - nested loop to make grid
  * @width: width input
  * @height: height input
