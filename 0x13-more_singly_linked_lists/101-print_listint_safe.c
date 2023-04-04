@@ -55,41 +55,33 @@ size_t looped_listint_len(const listint_t *head)
 }
 
 /**
- * print_listint_safe - prints a listint_t linked list safely
- * @head: pointer to the head of the list
+ * print_listint_safe - Prints a listint_t linked list safely.
+ * @head: A pointer to the head of the list.
  *
- * Return: the number of nodes in the list
+ * Return: The number of nodes in the list.
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t count = 0;
-	const listint_t *tortoise, *hare;
+	const listint_t *current = head, *temp;
+	size_t count = 0, i;
 
-	tortoise = hare = head;
-
-	while (hare && hare->next)
+	while (current)
 	{
-		tortoise = tortoise->next;
-		hare = hare->next->next;
+		printf("[%p] %d\n", (void *)current, current->n);
+		count++;
+		temp = head;
 
-		/* If the hare catches up with the tortoise, there's a loop */
-		if (tortoise == hare)
+		for (i = 0; i < count; i++)
 		{
-			printf("-> [%p] %d\n", (void *)tortoise, tortoise->n);
-			printf("-> loop detected\n");
-			exit(98);
+			if (current == temp)
+			{
+				printf("-> [%p] %d\n", (void *)current, current->n);
+				exit(98);
+			}
+			temp = temp->next;
 		}
 
-		/* print current node */
-		printf("[%p] %d\n", (void *)tortoise, tortoise->n);
-		count++;
-	}
-
-	/* print the last node and return the number of nodes in the list */
-	if (hare)
-	{
-		printf("[%p] %d\n", (void *)hare, hare->n);
-		count++;
+		current = current->next;
 	}
 
 	return (count);
