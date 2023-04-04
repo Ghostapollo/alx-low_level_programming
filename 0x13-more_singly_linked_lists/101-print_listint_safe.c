@@ -12,26 +12,32 @@ size_t print_listint_safe(const listint_t *head)
 {
 	size_t count = 0;
 	const listint_t *current, *temp;
-
-	current = head;
+	int loop_detected = 0;
 
 	while (current != NULL)
 	{
 		printf("[%p] %d\n", (void *)current, current->n);
 		count++;
 
-		/* move to next node */
-		temp = current;
-		current = current->next;
-
 		/* check if we have already visited this node */
-		if (temp <= current)
-		{
-			printf("-> [%p] %d\n", (void *)current, current->n);
-			printf("-> loop detected\n");
-			exit(98);
-		}
-	}
+		temp = head;
 
+		for (size_t i = 0; i < count; i++)
+		{
+			if (temp == current)
+			{
+				printf("-> [%p] %d\n", (void *)current, current->n);
+				printf("-> loop detected\n");
+				loop_detected = 1;
+				break;
+			}
+			temp = temp->next;
+		}
+
+		if (loop_detected)
+			exit(98);
+
+		current = current->next;
+	}
 	return (count);
 }
