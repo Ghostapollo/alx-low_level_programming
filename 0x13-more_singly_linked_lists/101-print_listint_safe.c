@@ -10,29 +10,35 @@
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t nodes, index = 0;
+	size_t count = 0;
+	const listint_t *current, *temp;
 
-	nodes = listint_len(head);
+	current = head;
 
-	if (nodes == 0)
+	while (current != NULL)
 	{
-		for (; head != NULL; nodes++)
+		count++;
+
+		/* check if we have already visited this node */
+		temp = head;
+		size_t i;
+
+		for (i = 0; i < count - 1; i++)
 		{
-			printf("[%p] %d\n", (void *)head, head->n);
-			head = head->next;
-		}
-	}
-	else
-	{
-		for (index = 0; index < nodes; index++)
-		{
-			printf("[%p] %d\n", (void *)head, head->n);
-			head = head->next;
+			if (temp == current)
+			{
+				printf("-> [%p] %d\n", (void *)current, current->n);
+				printf("-> loop detected\n");
+				exit(98);
+			}
+			temp = temp->next;
 		}
 
-		printf("-> [%p] %d\n", (void *)head, head->n);
+		/* move to next node */
+		printf("[%p] %d\n", (void *)current, current->n);
+		current = current->next;
 	}
 
-	return (nodes);
+	return (count);
 }
 
