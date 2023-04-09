@@ -8,11 +8,7 @@
  */
 int get_endianness(void)
 {
-	unsigned int task = 1;
-	char *r = (char *)&task;
-
-	if (*r)
-		return (1);
-	else
-		return (0);
+	unsigned int a = 1;
+	char *r = (char *) &a;
+	return ((int)*r);
 }
