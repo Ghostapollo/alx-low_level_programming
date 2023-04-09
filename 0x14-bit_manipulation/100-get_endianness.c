@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
- * get_endianness - checks the endianness of the system
+ * get_endianness - checks the endianness of this system
  *
  * Returns: 0 if big endian, 1 if little endian
  */
